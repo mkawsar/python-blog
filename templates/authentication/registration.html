@@ -1,31 +1,57 @@
 {% extends "layouts/base.html" %}
 {% block content %}
-    <div class="content-section">
-        <form action="{% url 'auth:registration' %}" class="border-lg" method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheck">
-                  <label class="form-check-label" for="gridCheck">
-                    Check me out
-                  </label>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Registration</button>
-        </form>
-        <div class="border-top mt-2 pt-3">
-            <small class="text-muted">
-                Already Have An Account? <a class="ml-2" href="{% url 'auth:login' %}">Sign In</a>
-            </small>
+<div class="content-section">
+    <form action="{% url 'auth:registration' %}" class="border-lg" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name"
+                   class="form-control {% if form.first_name.errors %} is-invalid {% endif %}" id="first_name"
+                   placeholder="First Name">
+            {% if form.first_name.errors %}
+            <span class="invalid-feedback">{{form.first_name.errors}}</span>
+            {% endif %}
         </div>
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name"
+                   class="form-control {% if form.last_name.errors %} is-invalid {% endif %}" id="last_name"
+                   placeholder="Last Name">
+            {% if form.last_name.errors %}
+            <span class="invalid-feedback">{{form.last_name.errors}}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control {% if form.email.errors %} is-invalid {% endif %}"
+                   id="email" aria-describedby="emailHelp"
+                   placeholder="Enter email">
+            {% if form.email.errors %}
+            <span class="invalid-feedback">{{form.email.errors}}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control {% if form.password.errors %} is-invalid {% endif %}"
+                   name="password" id="password" placeholder="Password">
+            {% if form.password.errors %}
+            <span class="invalid-feedback">{{form.password.errors}}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Check me out
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Registration</button>
+    </form>
+    <div class="border-top mt-2 pt-3">
+        <small class="text-muted">
+            Already Have An Account? <a class="ml-2" href="{% url 'auth:login' %}">Sign In</a>
+        </small>
     </div>
+</div>
 {% endblock content %}
