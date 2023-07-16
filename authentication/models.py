@@ -8,8 +8,10 @@ class Users(models.Model):
     phone = models.CharField(max_length=255, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(User, related_name='created_by_user', null=True, on_delete=models.CASCADE)
-    update_by = models.ForeignKey(User, related_name='updated_by_user', null=True, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, related_name='created_by_id', on_delete=models.DO_NOTHING, null=True,
+                                   blank=True)
+    update_by = models.ForeignKey(User, related_name='updated_by_id', on_delete=models.DO_NOTHING, null=True,
+                                  blank=True)
 
     class Meta:
         db_table = 'users_details'

@@ -24,18 +24,35 @@
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" name="email" class="form-control {% if form.email.errors %} is-invalid {% endif %}"
-                   id="email" aria-describedby="emailHelp"
-                   placeholder="Enter email">
+                   id="email" aria-describedby="emailHelp" placeholder="Enter email">
             {% if form.email.errors %}
             <span class="invalid-feedback">{{form.email.errors}}</span>
             {% endif %}
         </div>
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control {% if form.username.errors %} is-invalid {% endif %}"
+                   id="username" placeholder="Enter username">
+            {% if form.username.errors %}
+            <span class="invalid-feedback">{{form.username.errors}}</span>
+            {% endif %}
+        </div>
+
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control {% if form.password.errors %} is-invalid {% endif %}"
                    name="password" id="password" placeholder="Password">
             {% if form.password.errors %}
             <span class="invalid-feedback">{{form.password.errors}}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control {% if form.phone.errors %} is-invalid {% endif %}"
+                   name="phone" id="phone" placeholder="Phone">
+            {% if form.phone.errors %}
+            <span class="invalid-feedback">{{form.phone.errors}}</span>
             {% endif %}
         </div>
         <div class="form-group">
